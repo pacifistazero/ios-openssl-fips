@@ -1,0 +1,26 @@
+--- apps/openssl.cnf	2017-01-26 21:22:03.000000000 +0800
++++ ../openssl.cnf copy	2017-05-24 10:46:02.000000000 +0800
+@@ -8,9 +8,13 @@
+ HOME			= .
+ RANDFILE		= $ENV::HOME/.rnd
+ 
++openssl_conf = openssl_init
++[ openssl_init ]
++
+ # Extra OBJECT IDENTIFIER info:
+ #oid_file		= $ENV::HOME/.oid
+ oid_section		= new_oids
++alg_section 	= algs
+ 
+ # To use this configuration file with the "-extfile" option of the
+ # "openssl x509" utility, name here the section containing the
+@@ -32,6 +36,9 @@
+ tsa_policy2 = 1.2.3.4.5.6
+ tsa_policy3 = 1.2.3.4.5.7
+ 
++[ algs ]
++fips_mode = yes
++
+ ####################################################################
+ [ ca ]
+ default_ca	= CA_default		# The default ca section

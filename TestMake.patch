@@ -1,0 +1,13 @@
+--- Makefile    2017-05-23 13:24:00.000000000 +0800
++++ ../Makefile 2017-05-23 13:24:00.000000000 +0800
+@@ -25,8 +25,8 @@
+ 
+ DLIBCRYPTO= ../libcrypto.a
+ DLIBSSL= ../libssl.a
+-LIBCRYPTO= -L.. -lcrypto
+-LIBSSL= -L.. -lssl
++LIBCRYPTO=../libcrypto.a
++LIBSSL=../libssl.a
+ 
+ BNTEST=		bntest
+ ECTEST=		ectest

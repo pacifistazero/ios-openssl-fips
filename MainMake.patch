@@ -1,0 +1,33 @@
+--- Makefile    2017-05-23 13:24:00.000000000 +0800
++++ ../Makefile 2017-05-23 13:24:00.000000000 +0800
+@@ -66,13 +66,13 @@
+ EX_LIBS= 
+ EXE_EXT= 
+ ARFLAGS= 
+-AR= ar $(ARFLAGS) r
++AR= libtool -o
+ RANLIB= /usr/bin/ranlib
+ NM= nm
+ PERL= /usr/bin/perl
+ TAR= tar
+ TARFLAGS= --no-recursion
+-MAKEDEPPROG=makedepend
++MAKEDEPPROG=$(CC) -M
+ LIBDIR=lib
+ 
+ # We let the C compiler driver to take care of .s files. This is done in
+@@ -609,10 +609,10 @@
+ 	fi
+ 	cp libcrypto.pc $(INSTALL_PREFIX)$(INSTALLTOP)/$(LIBDIR)/pkgconfig
+ 	chmod 644 $(INSTALL_PREFIX)$(INSTALLTOP)/$(LIBDIR)/pkgconfig/libcrypto.pc
+-	cp libssl.pc $(INSTALL_PREFIX)$(INSTALLTOP)/$(LIBDIR)/pkgconfig
+-	chmod 644 $(INSTALL_PREFIX)$(INSTALLTOP)/$(LIBDIR)/pkgconfig/libssl.pc
+-	cp openssl.pc $(INSTALL_PREFIX)$(INSTALLTOP)/$(LIBDIR)/pkgconfig
+-	chmod 644 $(INSTALL_PREFIX)$(INSTALLTOP)/$(LIBDIR)/pkgconfig/openssl.pc
++	#cp libssl.pc $(INSTALL_PREFIX)$(INSTALLTOP)/$(LIBDIR)/pkgconfig
++	#chmod 644 $(INSTALL_PREFIX)$(INSTALLTOP)/$(LIBDIR)/pkgconfig/libssl.pc
++	#cp openssl.pc $(INSTALL_PREFIX)$(INSTALLTOP)/$(LIBDIR)/pkgconfig
++	#chmod 644 $(INSTALL_PREFIX)$(INSTALLTOP)/$(LIBDIR)/pkgconfig/openssl.pc
+ 
+ install_html_docs:
+ 	here="`pwd`"; \

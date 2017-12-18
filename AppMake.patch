@@ -1,0 +1,57 @@
+--- apps/Makefile	2016-09-22 18:30:26.000000000 +0800
++++ ../Makefile	2017-05-23 13:28:57.000000000 +0800
+@@ -26,8 +26,8 @@
+
+ DLIBCRYPTO=../libcrypto.a
+ DLIBSSL=../libssl.a
+-LIBCRYPTO=-L.. -lcrypto
+-LIBSSL=-L.. -lssl
++LIBCRYPTO=../libcrypto.a
++LIBSSL=../libssl.a
+ 
+ PROGRAM= openssl
+ 
+@@ -101,24 +101,24 @@
+ 	$(PERL) $(TOP)/util/files.pl Makefile >> $(TOP)/MINFO
+ 
+ install:
+-	@[ -n "$(INSTALLTOP)" ] # should be set by top Makefile...
+-	@set -e; for i in $(EXE); \
+-	do  \
+-	(echo installing $$i; \
+-	 cp $$i $(INSTALL_PREFIX)$(INSTALLTOP)/bin/$$i.new; \
+-	 chmod 755 $(INSTALL_PREFIX)$(INSTALLTOP)/bin/$$i.new; \
+-	 mv -f $(INSTALL_PREFIX)$(INSTALLTOP)/bin/$$i.new $(INSTALL_PREFIX)$(INSTALLTOP)/bin/$$i ); \
+-	 done;
+-	@set -e; for i in $(SCRIPTS); \
+-	do  \
+-	(echo installing $$i; \
+-	 cp $$i $(INSTALL_PREFIX)$(OPENSSLDIR)/misc/$$i.new; \
+-	 chmod 755 $(INSTALL_PREFIX)$(OPENSSLDIR)/misc/$$i.new; \
+-	 mv -f $(INSTALL_PREFIX)$(OPENSSLDIR)/misc/$$i.new $(INSTALL_PREFIX)$(OPENSSLDIR)/misc/$$i ); \
+-	 done
+-	@cp openssl.cnf $(INSTALL_PREFIX)$(OPENSSLDIR)/openssl.cnf.new; \
+-	chmod 644 $(INSTALL_PREFIX)$(OPENSSLDIR)/openssl.cnf.new; \
+-	mv -f  $(INSTALL_PREFIX)$(OPENSSLDIR)/openssl.cnf.new $(INSTALL_PREFIX)$(OPENSSLDIR)/openssl.cnf
++	#@[ -n "$(INSTALLTOP)" ] # should be set by top Makefile...
++	#@set -e; for i in $(EXE); \
++	#do  \
++	#(echo installing $$i; \
++	# cp $$i $(INSTALL_PREFIX)$(INSTALLTOP)/bin/$$i.new; \
++	# chmod 755 $(INSTALL_PREFIX)$(INSTALLTOP)/bin/$$i.new; \
++	# mv -f $(INSTALL_PREFIX)$(INSTALLTOP)/bin/$$i.new $(INSTALL_PREFIX)$(INSTALLTOP)/bin/$$i ); \
++	# done;
++	#@set -e; for i in $(SCRIPTS); \
++	#do  \
++	#(echo installing $$i; \
++	# cp $$i $(INSTALL_PREFIX)$(OPENSSLDIR)/misc/$$i.new; \
++	# chmod 755 $(INSTALL_PREFIX)$(OPENSSLDIR)/misc/$$i.new; \
++	# mv -f $(INSTALL_PREFIX)$(OPENSSLDIR)/misc/$$i.new $(INSTALL_PREFIX)$(OPENSSLDIR)/misc/$$i ); \
++	# done
++	#@cp openssl.cnf $(INSTALL_PREFIX)$(OPENSSLDIR)/openssl.cnf.new; \
++	#chmod 644 $(INSTALL_PREFIX)$(OPENSSLDIR)/openssl.cnf.new; \
++	#mv -f  $(INSTALL_PREFIX)$(OPENSSLDIR)/openssl.cnf.new $(INSTALL_PREFIX)$(OPENSSLDIR)/openssl.cnf
+ 
+ tags:
+ 	ctags $(SRC)
+
